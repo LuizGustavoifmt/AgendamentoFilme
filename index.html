@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Filmes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="form-box">
+    <h1>Agendamento de Filmes</h1>
+    <div class="container">
+        <div class="form-container">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" placeholder="Digite seu nome" required>
+
+            <label for="filme">Filme:</label>
+            <input type="text" id="filme" placeholder="Digite o nome do filme" required>
+
+            <label for="data">Data:</label>
+            <input type="date" id="data" required>
+
+            <label for="hora">Hora:</label>
+            <input type="time" id="hora" required>
+
+            <button id="enviar">Enviar</button>
+        </div>
+        <div class="result-container" id="result">
+            <h2>Valores Digitados:</h2>
+            <table id="result-table" border="1">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Filme</th>
+                        <th>Data</th>
+                        <th>Hora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('enviar').addEventListener('click', function() {
+        const nome = document.getElementById('nome').value;
+        const filme = document.getElementById('filme').value;
+        const data = document.getElementById('data').value;
+        const hora = document.getElementById('hora').value;
+
+        // Cria uma nova linha na tabela
+        const table = document.getElementById('result-table').getElementsByTagName('tbody')[0];
+        const newRow = table.insertRow();
+
+        // Adiciona as células com os dados
+        const cellNome = newRow.insertCell(0);
+        const cellFilme = newRow.insertCell(1);
+        const cellData = newRow.insertCell(2);
+        const cellHora = newRow.insertCell(3);
+
+        cellNome.innerText = nome;
+        cellFilme.innerText = filme;
+        cellData.innerText = data;
+        cellHora.innerText = hora;
+
+        // Limpa os campos após o envio
+        document.getElementById('nome').value = '';
+        document.getElementById('filme').value = '';
+        document.getElementById('data').value = '';
+        document.getElementById('hora').value = '';
+    });
+</script>
+
+</body>
+</html>
